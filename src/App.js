@@ -1,5 +1,5 @@
 import './App.css';
-import PaymentPlan from './components/paymentPlan';
+import PaymentPlan from './components/PaymentPlan/paymentPlan';
 
 function App() {
   return (

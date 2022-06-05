@@ -1,0 +1,549 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PaymentPlan /> components snapshots should match the snapshot 1`] = `
+<div>
+  <div
+    id="mainContainer"
+  >
+    <div
+      id="mortgageCalculator"
+    >
+      <form
+        id="formContainer"
+      >
+        <div
+          class="formFields"
+        >
+          <div
+            class="formFieldContainer"
+          >
+            <div
+              class="fieldLabel"
+            >
+              <label
+                for="principalAmount"
+              >
+                Mortgage Amount:
+              </label>
+            </div>
+            <div
+              class="fieldEntry"
+            >
+              <span
+                class="specialEntry"
+              >
+                $
+              </span>
+              <input
+                id="principalAmount"
+                maxlength="20"
+                name="principalAmount"
+                type="number"
+                value="200000"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="formFields"
+        >
+          <div
+            class="formFieldContainer"
+          >
+            <div
+              class="fieldLabel"
+            >
+              <label
+                for="interestRate"
+              >
+                Interest Rate:
+              </label>
+            </div>
+            <div
+              class="fieldEntry"
+            >
+              <input
+                id="interestRate"
+                maxlength="8"
+                name="interestRate"
+                type="number"
+                value="6.5"
+              />
+              <span
+                class="specialEntry"
+              >
+                %
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="formFields"
+        >
+          <div
+            class="formFieldContainer"
+          >
+            <div
+              class="fieldLabel"
+            >
+              <label
+                for="amortizationPeriod"
+              >
+                Amortization Period:
+              </label>
+            </div>
+            <div
+              class="fieldEntry"
+            >
+              <select
+                id="amortizationPeriod"
+                name="amortizationPeriod"
+              >
+                <option
+                  value="1"
+                >
+                  1 Year
+                </option>
+                <option
+                  value="2"
+                >
+                  2 Years
+                </option>
+                <option
+                  value="3"
+                >
+                  3 Years
+                </option>
+                <option
+                  value="4"
+                >
+                  4 Years
+                </option>
+                <option
+                  value="5"
+                >
+                  5 Years
+                </option>
+                <option
+                  value="6"
+                >
+                  6 Years
+                </option>
+                <option
+                  value="7"
+                >
+                  7 Years
+                </option>
+                <option
+                  value="8"
+                >
+                  8 Years
+                </option>
+                <option
+                  value="9"
+                >
+                  9 Years
+                </option>
+                <option
+                  value="10"
+                >
+                  10 Years
+                </option>
+                <option
+                  value="11"
+                >
+                  11 Years
+                </option>
+                <option
+                  value="12"
+                >
+                  12 Years
+                </option>
+                <option
+                  value="13"
+                >
+                  13 Years
+                </option>
+                <option
+                  value="14"
+                >
+                  14 Years
+                </option>
+                <option
+                  value="15"
+                >
+                  15 Years
+                </option>
+                <option
+                  value="16"
+                >
+                  16 Years
+                </option>
+                <option
+                  value="17"
+                >
+                  17 Years
+                </option>
+                <option
+                  value="18"
+                >
+                  18 Years
+                </option>
+                <option
+                  value="19"
+                >
+                  19 Years
+                </option>
+                <option
+                  value="20"
+                >
+                  20 Years
+                </option>
+                <option
+                  value="21"
+                >
+                  21 Years
+                </option>
+                <option
+                  value="22"
+                >
+                  22 Years
+                </option>
+                <option
+                  value="23"
+                >
+                  23 Years
+                </option>
+                <option
+                  value="24"
+                >
+                  24 Years
+                </option>
+                <option
+                  value="25"
+                >
+                  25 Years
+                </option>
+                <option
+                  value="26"
+                >
+                  26 Years
+                </option>
+                <option
+                  value="27"
+                >
+                  27 Years
+                </option>
+                <option
+                  value="28"
+                >
+                  28 Years
+                </option>
+                <option
+                  value="29"
+                >
+                  29 Years
+                </option>
+                <option
+                  value="30"
+                >
+                  30 Years
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div
+          class="formFields"
+        >
+          <div
+            class="formFieldContainer"
+          >
+            <div
+              class="fieldLabel"
+            >
+              <label
+                for="paymentFrequency"
+              >
+                Payment Frequency:
+              </label>
+            </div>
+            <div
+              class="fieldEntry"
+            >
+              <select
+                id="paymentFrequency"
+                name="paymentFrequency"
+              >
+                <option
+                  value="12"
+                >
+                  Monthly (12x per year)
+                </option>
+                <option
+                  value="24"
+                >
+                  Semi-monthly (24x per year)
+                </option>
+                <option
+                  value="26"
+                >
+                  Bi-Weekly (every 2 weeks)
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div
+          class="formFields"
+        >
+          <div
+            class="formFieldContainer"
+          >
+            <div
+              class="fieldLabel"
+            >
+              <label
+                for="term"
+              >
+                Term:
+              </label>
+            </div>
+            <div
+              class="fieldEntry"
+            >
+              <select
+                id="term"
+                name="term"
+              >
+                <option
+                  value="1"
+                >
+                  1 Year
+                </option>
+                <option
+                  value="2"
+                >
+                  2 Years
+                </option>
+                <option
+                  value="3"
+                >
+                  3 Years
+                </option>
+                <option
+                  value="4"
+                >
+                  4 Years
+                </option>
+                <option
+                  value="5"
+                >
+                  5 Years
+                </option>
+                <option
+                  value="6"
+                >
+                  6 Years
+                </option>
+                <option
+                  value="7"
+                >
+                  7 Years
+                </option>
+                <option
+                  value="8"
+                >
+                  8 Years
+                </option>
+                <option
+                  value="9"
+                >
+                  9 Years
+                </option>
+                <option
+                  value="10"
+                >
+                  10 Years
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br />
+        <input
+          id="submitButton"
+          type="submit"
+          value="Calculate"
+        />
+      </form>
+    </div>
+    <div
+      class="hidden"
+      id="calculationSummary"
+    >
+      <h2>
+        Calculation Summary
+      </h2>
+      <table
+        id="summaryTable"
+      >
+        <thead>
+          <tr
+            class="tableRow"
+          >
+            <th>
+              Category
+            </th>
+            <th>
+              Term
+            </th>
+            <th>
+              Amortization Period
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Number of Payments
+            </td>
+            <td>
+              60
+            </td>
+            <td>
+              300
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Mortgage Payment
+            </td>
+            <td>
+              $
+            </td>
+            <td>
+              $
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Principal Payment
+            </td>
+            <td>
+              $
+              0.00
+            </td>
+            <td>
+              $
+              200,000
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Interest Payments
+            </td>
+            <td>
+              $
+            </td>
+            <td>
+              $
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Total Cost
+            </td>
+            <td>
+              $
+              0
+            </td>
+            <td>
+              $
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      class="hidden"
+      id="mortgageSummary"
+    >
+      <h2>
+        Mortgage Summary
+      </h2>
+      <p>
+        Over the 
+        <b>
+          25
+        </b>
+        -year amortization period, you will:
+      </p>
+      <p>
+        have made 
+        <b>
+          300
+        </b>
+         (
+        12
+        x per year) payments of 
+        <b>
+          $
+        </b>
+        .
+      </p>
+      <p>
+        have paid $
+        <b>
+          200,000
+        </b>
+         in principal, 
+        <b>
+          $
+        </b>
+         in interest, for a total of 
+        <b>
+          $
+        </b>
+      </p>
+      <p>
+        Over the 
+        <b>
+          5
+        </b>
+        -year term, you will:
+      </p>
+      <p>
+        have made 
+        <b>
+          60
+        </b>
+         (
+        12
+        x per year) payments of  
+        <b>
+          $
+        </b>
+        .
+      </p>
+      <p>
+        have paid 
+        <b>
+          $
+          0.00
+        </b>
+         in principal, 
+        <b>
+          $
+        </b>
+         in interest, for a total of 
+        <b>
+          $
+          0
+        </b>
+        .
+      </p>
+    </div>
+  </div>
+</div>
+`;

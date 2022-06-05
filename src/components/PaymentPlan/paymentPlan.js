@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import addComma from '../lib/addComma';
-import roundToFixed from '../lib/roundToFixed';
-import showSummary from '../lib/showSummary';
-import hideSummary from '../lib/hideSummary';
+import addComma from '../../lib/addComma/addComma';
+import roundToFixed from '../../lib/roundToFixed/roundToFixed';
+import showSummary from '../../lib/showSummary/showSummary';
+import hideSummary from '../../lib/hideSummary/hideSummary';
 import './paymentPlan.css';
 
 const initialValues = {
