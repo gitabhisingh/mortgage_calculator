@@ -1,15 +1,11 @@
 import { useState } from 'react';
+import addComma from '../lib/addComma';
+import roundToFixed from '../lib/roundToFixed';
+import showSummary from '../lib/showSummary';
+import hideSummary from '../lib/hideSummary';
 import './paymentPlan.css';
 
 const initialValues = {
-    principalAmount: 200000.00,
-    interestRate: 6.50,
-    amortizationPeriod: 25,
-    paymentFrequency: 12,
-    term: 5,
-}
-
-const paymentValues = {
     principalAmount: 200000.00,
     interestRate: 6.50,
     amortizationPeriod: 25,
@@ -21,21 +17,24 @@ const paymentValues = {
     interestAtTerm: '',
 }
 
-const addComma = (num) => {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-const roundToFixed = (num, places) => {
-    return num.toFixed(places)
-}
-
 export default function PaymentPlan(){
-
     const [initialState, setInitialState] = useState(initialValues);
 
-    const [paymentState, setPaymentState] = useState(paymentValues);
+    const numberOfPaymentsTerm = initialState.term * initialState.paymentFrequency;
+    const numberOfPayments = initialState.amortizationPeriod * initialState.paymentFrequency;
 
-    const calculatePayment = (event) => {
+    const mortgagePaymentTerm = addComma(initialState.mortgagePayment);
+
+    const principalPaymentTerm = addComma(roundToFixed((initialState.mortgagePayment * numberOfPaymentsTerm) - (initialState.interestAtTerm), 2));
+    const principalPayment = addComma(initialState.principalAmount);
+
+    const interestPaymentsTerm = addComma(initialState.interestAtTerm);
+    const interestPayments = addComma(initialState.totalInterest);
+
+    const totalCostTerm = addComma(roundToFixed(initialState.mortgagePayment * numberOfPaymentsTerm), 2);
+    const totalCost = addComma(initialState.totalAmount);
+
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const interestValue = initialState.interestRate / 100 / initialState.paymentFrequency;
@@ -46,18 +45,21 @@ export default function PaymentPlan(){
 
         const totalInterest = roundToFixed((totalAmount - initialState.principalAmount), 2)
 
-        const interestAtTerm = roundToFixed((initialState.principalAmount*interestValue - paymentValue) * ((Math.pow(1 + interestValue, (initialState.term * initialState.paymentFrequency)) - 1) / interestValue) + (paymentValue * paymentState.paymentFrequency * paymentState.term), 2);
+        const interestAtTerm = roundToFixed((initialState.principalAmount*interestValue - paymentValue) * ((Math.pow(1 + interestValue, (numberOfPaymentsTerm)) - 1) / interestValue) + (paymentValue * initialState.paymentFrequency * initialState.term), 2);
 
-        setPaymentState({...paymentState, mortgagePayment: paymentValue, totalAmount: totalAmount, totalInterest: totalInterest, interestAtTerm: interestAtTerm})
+        setInitialState({...initialState, mortgagePayment: paymentValue, totalAmount: totalAmount, totalInterest: totalInterest, interestAtTerm: interestAtTerm});
+
+        showSummary();
     }
 
     const handleFieldChange = (event) => {
+        hideSummary();
         setInitialState({...initialState, [event.target.name]: event.target.value})
     }
 
     return (<div id="mainContainer">
         <div id="mortgageCalculator">
-            <form id="formContainer" onSubmit={calculatePayment}>
+            <form id="formContainer" onSubmit={handleSubmit}>
                 <div className="formFields">
                     <div className="formFieldContainer">
                         <div className="fieldLabel">
@@ -160,56 +162,56 @@ export default function PaymentPlan(){
                 <input id="submitButton" type="submit" value="Calculate" />
             </form>
         </div>
-        <div id="calculationSummary">
+        <div id="calculationSummary" className="hidden">
             <h2>Calculation Summary</h2>
             <table id="summaryTable">
                 <thead>
                     <tr className='tableRow'>
                         <th>Category</th>
-                        <th>Term | {paymentState.term} year(s)</th>
-                        <th>Amortization Period | {paymentState.amortizationPeriod} year(s)</th>
+                        <th>Term</th>
+                        <th>Amortization Period</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>Number of Payments</td>
-                        <td>{paymentState.term * paymentState.paymentFrequency}</td>
-                        <td>{paymentState.amortizationPeriod * paymentState.paymentFrequency}</td>
+                        <td>{numberOfPaymentsTerm}</td>
+                        <td>{numberOfPayments}</td>
                     </tr>
                     <tr>
                         <td>Mortgage Payment</td>
-                        <td>${addComma(paymentState.mortgagePayment)}</td>
-                        <td>${addComma(paymentState.mortgagePayment)}</td>
+                        <td>${mortgagePaymentTerm}</td>
+                        <td>${mortgagePaymentTerm}</td>
                     </tr>
                     <tr>
                         <td>Principal Payment</td>
-                        <td>${addComma(roundToFixed((paymentState.mortgagePayment * paymentState.term * paymentState.paymentFrequency) - (paymentState.interestAtTerm), 2))}</td>
-                        <td>${addComma(paymentState.principalAmount)}</td>
+                        <td>${principalPaymentTerm}</td>
+                        <td>${principalPayment}</td>
                     </tr>
                     <tr>
                         <td>Interest Payments</td>
-                        <td>${addComma(paymentState.interestAtTerm)}</td>
-                        <td>${addComma(paymentState.totalInterest)}</td>
+                        <td>${interestPaymentsTerm}</td>
+                        <td>${interestPayments}</td>
                     </tr>
                     <tr>
                         <td>Total Cost</td>
-                        <td>${addComma(roundToFixed(paymentState.mortgagePayment * paymentState.term * paymentState.paymentFrequency), 2)}</td>
-                        <td>${addComma(paymentState.totalAmount)}</td>
+                        <td>${totalCostTerm}</td>
+                        <td>${totalCost}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div id="mortgageSummary">
+        <div id="mortgageSummary" className="hidden">
             <h2>Mortgage Summary</h2>
             
-            <p>Over the <b>{paymentState.amortizationPeriod}</b>-year amortization period, you will:</p>
-            <p>have made <b>{paymentState.amortizationPeriod * paymentState.paymentFrequency}</b> ({paymentState.paymentFrequency}x per year) payments of <b>${addComma(paymentState.mortgagePayment)}</b>.</p>
-            <p>have paid $<b>{addComma(paymentState.principalAmount)}</b> in principal, <b>${addComma(paymentState.totalInterest)}</b> in interest, for a total of <b>${addComma(paymentState.totalAmount)}</b></p>
+            <p>Over the <b>{initialState.amortizationPeriod}</b>-year amortization period, you will:</p>
+            <p>have made <b>{initialState.amortizationPeriod * initialState.paymentFrequency}</b> ({initialState.paymentFrequency}x per year) payments of <b>${mortgagePaymentTerm}</b>.</p>
+            <p>have paid $<b>{principalPayment}</b> in principal, <b>${interestPayments}</b> in interest, for a total of <b>${totalCost}</b></p>
 
-            <p>Over the <b>{paymentState.term}</b>-year term, you will:</p>
+            <p>Over the <b>{initialState.term}</b>-year term, you will:</p>
 
-            <p>have made <b>{paymentState.term * paymentState.paymentFrequency}</b> ({paymentState.paymentFrequency}x per year) payments of  <b>${addComma(paymentState.mortgagePayment)}</b>.</p>
-            <p>have paid <b>${addComma(roundToFixed((paymentState.mortgagePayment * paymentState.term * paymentState.paymentFrequency) - (paymentState.interestAtTerm), 2))}</b> in principal, <b>${addComma(paymentState.interestAtTerm)}</b> in interest, for a total of <b>${addComma(roundToFixed(paymentState.mortgagePayment * paymentState.term * paymentState.paymentFrequency), 2)}</b>.</p>
+            <p>have made <b>{numberOfPaymentsTerm}</b> ({initialState.paymentFrequency}x per year) payments of  <b>${mortgagePaymentTerm}</b>.</p>
+            <p>have paid <b>${principalPaymentTerm}</b> in principal, <b>${interestPaymentsTerm}</b> in interest, for a total of <b>${totalCostTerm}</b>.</p>
         </div>
     </div>)
 }

@@ -9,19 +9,36 @@
     align-items: center;
 }
 
+.hidden{
+    display: none;
+}
+
 .formFields{
-    width: 40%;
+    width: 100%;
     margin: 4px 0;
+}
+
+@media only screen and (min-width: 900px) {
+    .formFields{
+        width: 40%;
+    }
 }
 
 .formFieldContainer{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+}
+
+@media only screen and (min-width: 900px) {
+    .formFieldContainer{
+        flex-direction: row;
+    }
 }
 
 .fieldLabel{
     font-weight: 700;
+    margin-bottom: 2px;
 }
 
 .fieldEntry{
@@ -34,7 +51,8 @@ form input, form select {
 }
 
 .specialEntry{
-    padding: 10px 14px;
+    padding: 8px 14px;
+    vertical-align: middle;
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
