@@ -1,15 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import PaymentPlan from './components/paymentPlan';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <h1>
           Mortgage Calculator
         </h1>
       </header>
+      <div>
+        <PaymentPlan />
+      </div>
     </div>
   );
 }
