@@ -53,3 +53,19 @@ form input, form select {
     height: 37px;
     border-radius: 4px;
 }
+
+#summaryTable{
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+
+table td, table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
